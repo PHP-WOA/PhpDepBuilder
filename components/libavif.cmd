@@ -48,7 +48,7 @@ setlocal
     cmake --install . --config RelWithDebInfo --prefix ..\..\..\installed || exit /b 1
     xcopy RelWithDebInfo\*.lib . /y
     xcopy RelWithDebInfo\*.pdb . /y
-    copy RelWithDebInfo\aom.lib .\aom_a.lib /y
+    copy RelWithDebInfo\aom.lib ..\..\..\installed\lib\aom_a.lib /y
     popd
 
     :: Build libavif
