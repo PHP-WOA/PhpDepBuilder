@@ -36,19 +36,19 @@ setlocal
     if /i "%~1"=="x86" (
     xcopy %~dp0..\buildtree\cyrus-sasl\win32\Win32\Release\libsasl.dll %~dp0..\libs\cyrus-sasl\%~1\bin\ /Y
     xcopy %~dp0..\buildtree\cyrus-sasl\win32\Win32\Release\libsasl.pdb %~dp0..\libs\cyrus-sasl\%~1\bin\ /Y
-    xcopy %~dp0..\buildtree\cyrus-sasl\win32\Win32\Release\plugin_sasldb.dll %~dp0..\libs\cyrus-sasl\%~1\bin\ /Y
-    xcopy %~dp0..\buildtree\cyrus-sasl\win32\Win32\Release\plugin_sasldb.pdb %~dp0..\libs\cyrus-sasl\%~1\bin\ /Y
-    xcopy %~dp0..\buildtree\cyrus-sasl\include\*.h %~dp0..\libs\cyrus-sasl\%~1\include\ /Y
-    xcopy %~dp0..\libs\cyrus-sasl\%~1\bin\ %~dp0..\install\%~1\bin\ /Y
-    xcopy %~dp0..\buildtree\cyrus-sasl\include\*.h %~dp0..\install\%~1\include\ /Y
+    xcopy %~dp0..\buildtree\cyrus-sasl\win32\Win32\Release\plugin_sasldb.dll %~dp0..\libs\cyrus-sasl\%~1\bin\sasl2\* /Y
+    xcopy %~dp0..\buildtree\cyrus-sasl\win32\Win32\Release\plugin_sasldb.pdb %~dp0..\libs\cyrus-sasl\%~1\bin\sasl2\* /Y
+    xcopy %~dp0..\buildtree\cyrus-sasl\include\*.h %~dp0..\libs\cyrus-sasl\%~1\include\sasl\* /Y
+    xcopy %~dp0..\buildtree\cyrus-sasl\win32\Win32\Release\libsasl.lib %~dp0..\libs\cyrus-sasl\%~1\lib\* /Y
+    xcopy %~dp0..\libs\cyrus-sasl\%~1\ %~dp0..\install\%~1\* /E /Y
     ) else (
     xcopy %~dp0..\buildtree\cyrus-sasl\win32\%~1\Release\libsasl.dll %~dp0..\libs\cyrus-sasl\%~1\bin\ /Y
     xcopy %~dp0..\buildtree\cyrus-sasl\win32\%~1\Release\libsasl.pdb %~dp0..\libs\cyrus-sasl\%~1\bin\ /Y
-    xcopy %~dp0..\buildtree\cyrus-sasl\win32\%~1\Release\plugin_sasldb.dll %~dp0..\libs\cyrus-sasl\%~1\bin\ /Y
-    xcopy %~dp0..\buildtree\cyrus-sasl\win32\%~1\Release\plugin_sasldb.pdb %~dp0..\libs\cyrus-sasl\%~1\bin\ /Y
-    xcopy %~dp0..\buildtree\cyrus-sasl\include\*.h %~dp0..\libs\cyrus-sasl\%~1\include\ /Y
-    xcopy %~dp0..\libs\cyrus-sasl\%~1\bin\ %~dp0..\install\%~1\bin\ /Y
-    xcopy %~dp0..\buildtree\cyrus-sasl\include\*.h %~dp0..\install\%~1\include\ /Y
+    xcopy %~dp0..\buildtree\cyrus-sasl\win32\%~1\Release\plugin_sasldb.dll %~dp0..\libs\cyrus-sasl\%~1\bin\sasl2\* /Y
+    xcopy %~dp0..\buildtree\cyrus-sasl\win32\%~1\Release\plugin_sasldb.pdb %~dp0..\libs\cyrus-sasl\%~1\bin\sasl2\* /Y
+    xcopy %~dp0..\buildtree\cyrus-sasl\include\*.h %~dp0..\libs\cyrus-sasl\%~1\include\sasl\* /Y
+    xcopy %~dp0..\buildtree\cyrus-sasl\win32\%~1\Release\libsasl.lib %~dp0..\libs\cyrus-sasl\%~1\lib\* /Y
+    xcopy %~dp0..\libs\cyrus-sasl\%~1\ %~dp0..\install\%~1\*  /E /Y
     )
 endlocal
 exit /b

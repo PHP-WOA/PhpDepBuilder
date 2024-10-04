@@ -40,7 +40,7 @@ setlocal
     xcopy bin\release\snmpd.exe %~dp0..\libs\net-snmp\%~1\bin\* /Y
     xcopy bin\release\snmpd.pdb %~dp0..\libs\net-snmp\%~1\bin\* /Y
     xcopy /e ..\include\net-snmp\*.h %~dp0..\libs\net-snmp\%~1\include\net-snmp\* /Y
-    xcopy /e ..\net-snmp\*.h %~dp0..\libs\net-snmp\%~1\include\net-snmp\* /Y
+    xcopy /e ..\win32\net-snmp\*.h %~dp0..\libs\net-snmp\%~1\include\net-snmp\* /Y
     xcopy include\net-snmp\library\README %~dp0..\libs\net-snmp\%~1\include\net-snmp\library\* /Y
     xcopy lib\release\netsnmp.lib %~dp0..\libs\net-snmp\%~1\lib\* /Y
     xcopy libsnmp\release\libsnmp.pdb %~dp0..\libs\net-snmp\%~1\lib\* /Y
@@ -48,7 +48,7 @@ setlocal
     xcopy bin\release\snmpd.exe %~dp0..\install\%~1\bin\* /Y
     xcopy bin\release\snmpd.pdb %~dp0..\install\%~1\bin\* /Y
     xcopy /e ..\include\net-snmp\*.h %~dp0..\install\%~1\include\net-snmp\* /Y
-    xcopy /e ..\net-snmp\*.h %~dp0..\install\%~1\include\net-snmp\* /Y
+    xcopy /e ..\win32\net-snmp\*.h %~dp0..\install\%~1\include\net-snmp\* /Y
     xcopy include\net-snmp\library\README %~dp0..\install\%~1\include\net-snmp\library\* /Y
     xcopy lib\release\netsnmp.lib %~dp0..\install\%~1\lib\* /Y
     xcopy libsnmp\release\libsnmp.pdb %~dp0..\install\%~1\lib\* /Y
