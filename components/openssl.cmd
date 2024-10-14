@@ -43,13 +43,14 @@ setlocal
 
     :: Install openssl
     echo Installing openssl for arch %~1...
+    copy /y %~dp0..\buildtree\openssl\ms\applink.c %~dp0temp\ssl\include\openssl /y
     xcopy %~dp0temp\ssl\bin\* %~dp0..\libs\openssl\%~1\bin\ /Y
     xcopy %~dp0temp\ssl\include\* %~dp0..\libs\openssl\%~1\include\ /Y /E
     xcopy %~dp0temp\ssl\lib\* %~dp0..\libs\openssl\%~1\lib\ /Y /E /S
     xcopy %~dp0temp\ssl\bin\* %~dp0..\install\%~1\bin\ /Y
     xcopy %~dp0temp\ssl\include\* %~dp0..\install\%~1\include\ /Y /E
     xcopy %~dp0temp\ssl\lib\* %~dp0..\install\%~1\lib\ /Y /E /S
-    rmdir /s /q %~dp0temp\ssl
+    rmdir /s /q %~dp0temp
 endlocal
 exit /b
 :failure
