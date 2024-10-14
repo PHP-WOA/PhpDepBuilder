@@ -11,7 +11,6 @@ libffi
 libiconv
 libjpeg
 liblzma
-libpng
 libsodium
 libtidy
 libwebp
@@ -31,6 +30,7 @@ zlib
 cyrus-sasl
 glib
 enchant
+libpng
 librdkafka
 libssh2
 curl
