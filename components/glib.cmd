@@ -9,9 +9,10 @@ if /i "%version%"=="" set "version=master"
 :: Define architecture array
 set "arch_list=x64 x86 arm arm64"
 
+:again
 :: Checkout glib repository
 echo Checking out glib repository with version %version%...
-if not exist %~dp0..\buildtree\glib git clone --branch %version% https://github.com/PHP-WOA/glib %~dp0..\buildtree\glib || goto :failure
+if not exist %~dp0..\buildtree\glib git clone --branch %version% https://github.com/PHP-WOA/glib %~dp0..\buildtree\glib || goto :again
 
 
 :: Loop through architectures

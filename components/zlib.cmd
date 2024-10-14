@@ -7,11 +7,12 @@ set "version=%1"
 if /i "%version%"=="" set "version=master"
 
 :: Define architecture array
-set "arch_list=x64 x86 arm64 arm"
+set "arch_list=x64 x86 arm arm64"
 
+:again
 :: Checkout zlib repository
 echo Checking out zlib repository with version %version%...
-if not exist %~dp0..\buildtree\zlib git clone --branch %version% https://github.com/PHP-WOA/zlib %~dp0..\buildtree\zlib || goto :failure
+if not exist %~dp0..\buildtree\zlib git clone --branch %version% https://github.com/PHP-WOA/zlib %~dp0..\buildtree\zlib || goto :again
 
 :: Loop through architectures
 for %%A in (%arch_list%) do (

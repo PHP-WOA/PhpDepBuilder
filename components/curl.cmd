@@ -7,11 +7,12 @@ set "version=%1"
 if /i "%version%"=="" set "version=master"
 
 :: Define architecture array
-set arch_list=x64 x86 arm arm64
+set "arch_list=x64 x86 arm arm64"
 
+:again
 :: Checkout curl repository
 echo Checking out curl repository with version %version%...
-if not exist %~dp0..\buildtree\curl git clone --branch %version% https://github.com/PHP-WOA/curl %~dp0..\buildtree\curl || goto :failure
+if not exist %~dp0..\buildtree\curl git clone --branch %version% https://github.com/PHP-WOA/curl %~dp0..\buildtree\curl || goto :again
 
 :: Loop through architectures
 for %%A in (%arch_list%) do (

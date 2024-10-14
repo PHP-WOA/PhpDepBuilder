@@ -11,11 +11,12 @@ if /i "%aomversion%"=="" set "aomversion=master"
 :: Define architecture array
 set "arch_list=x64 x86 arm arm64"
 
+:again
 :: Checkout libavif repository
 echo Checking out libavif repository with version %version%...
-if not exist %~dp0..\buildtree\libavif git clone --branch %version% https://github.com/PHP-WOA/libavif %~dp0..\buildtree\libavif || goto :failure
+if not exist %~dp0..\buildtree\libavif git clone --branch %version% https://github.com/PHP-WOA/libavif %~dp0..\buildtree\libavif || goto :again
 echo Checking out aom repository with version %version%...
-if not exist %~dp0..\buildtree\libavif\ext\aom git clone --branch %aomversion% https://github.com/PHP-WOA/aom %~dp0..\buildtree\libavif\ext\aom || goto :failure
+if not exist %~dp0..\buildtree\libavif\ext\aom git clone --branch %aomversion% https://github.com/PHP-WOA/aom %~dp0..\buildtree\libavif\ext\aom || goto :again
 
 
 :: Loop through architectures

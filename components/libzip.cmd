@@ -9,9 +9,10 @@ if /i "%version%"=="" set "version=master"
 :: Define architecture array
 set "arch_list=x64 x86 arm arm64"
 
+:again
 :: Checkout libzip repository
 echo Checking out libzip repository with version %version%...
-if not exist %~dp0..\buildtree\libzip git clone --branch %version% https://github.com/PHP-WOA/libzip %~dp0..\buildtree\libzip || goto :failure
+if not exist %~dp0..\buildtree\libzip git clone --branch %version% https://github.com/PHP-WOA/libzip %~dp0..\buildtree\libzip || goto :again
 
 
 :: Loop through architectures

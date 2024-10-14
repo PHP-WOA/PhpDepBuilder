@@ -9,9 +9,10 @@ if /i "%version%"=="" set "version=master"
 :: Define architecture array
 set "arch_list=x64 x86 arm arm64"
 
+:again
 :: Checkout mpir repository
 echo Checking out mpir repository with version %version%...
-if not exist %~dp0..\buildtree\mpir git clone --branch %version% https://github.com/PHP-WOA/mpir %~dp0..\buildtree\mpir || goto :failure
+if not exist %~dp0..\buildtree\mpir git clone --branch %version% https://github.com/PHP-WOA/mpir %~dp0..\buildtree\mpir || goto :again
 
 
 :: Loop through architectures

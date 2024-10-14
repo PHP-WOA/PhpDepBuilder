@@ -9,9 +9,10 @@ if /i "%version%"=="" set "version=master"
 :: Define architecture array
 set "arch_list=x64 x86 arm arm64"
 
+:again
 :: Checkout libffi repository
 echo Checking out libffi repository with version %version%...
-if not exist %~dp0..\buildtree\libffi git clone --branch %version% https://github.com/PHP-WOA/libffi %~dp0..\buildtree\libffi || goto :failure
+if not exist %~dp0..\buildtree\libffi git clone --branch %version% https://github.com/PHP-WOA/libffi %~dp0..\buildtree\libffi || goto :again
 
 
 :: Loop through architectures

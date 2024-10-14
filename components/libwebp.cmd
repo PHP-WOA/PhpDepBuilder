@@ -7,11 +7,12 @@ set "version=%1"
 if /i "%version%"=="" set "version=master"
 
 :: Define architecture array
-set "arch_list=x64 x86 arm64 arm"
+set "arch_list=x64 x86 arm arm64"
 
+:again
 :: Checkout libwebp repository
 echo Checking out libwebp repository with version %version%...
-if not exist %~dp0..\buildtree\libwebp git clone --branch %version% https://github.com/PHP-WOA/libwebp %~dp0..\buildtree\libwebp || goto :failure
+if not exist %~dp0..\buildtree\libwebp git clone --branch %version% https://github.com/PHP-WOA/libwebp %~dp0..\buildtree\libwebp || goto :again
 
 :: Loop through architectures
 for %%A in (%arch_list%) do (

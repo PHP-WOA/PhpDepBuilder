@@ -9,9 +9,10 @@ if /i "%version%"=="" set "version=master"
 :: Define architecture array
 set "arch_list=x64 x86 arm arm64"
 
+:again
 :: Checkout enchant repository
 echo Checking out enchant repository with version %version%...
-if not exist %~dp0..\buildtree\enchant git clone --branch %version% https://github.com/PHP-WOA/enchant %~dp0..\buildtree\enchant || goto :failure
+if not exist %~dp0..\buildtree\enchant git clone --branch %version% https://github.com/PHP-WOA/enchant %~dp0..\buildtree\enchant || goto :again
 
 
 :: Loop through architectures

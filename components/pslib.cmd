@@ -9,9 +9,10 @@ if /i "%version%"=="" set "version=main"
 :: Define architecture array
 set "arch_list=x64 x86 arm arm64"
 
+:again
 :: Checkout pslib repository
 echo Checking out pslib repository with version %version%...
-if not exist %~dp0..\buildtree\pslib git clone --branch %version% https://github.com/PHP-WOA/pslib %~dp0..\buildtree\pslib || goto :failure
+if not exist %~dp0..\buildtree\pslib git clone --branch %version% https://github.com/PHP-WOA/pslib %~dp0..\buildtree\pslib || goto :again
 
 
 :: Loop through architectures

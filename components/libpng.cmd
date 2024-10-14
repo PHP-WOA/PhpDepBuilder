@@ -9,9 +9,10 @@ if /i "%version%"=="" set "version=master"
 :: Define architecture array
 set "arch_list=x64 x86 arm arm64"
 
+:again
 :: Checkout libpng repository
 echo Checking out libpng repository with version %version%...
-if not exist %~dp0..\buildtree\libpng git clone --branch %version% https://github.com/PHP-WOA/libpng %~dp0..\buildtree\libpng || goto :failure
+if not exist %~dp0..\buildtree\libpng git clone --branch %version% https://github.com/PHP-WOA/libpng %~dp0..\buildtree\libpng || goto :again
 
 
 :: Loop through architectures

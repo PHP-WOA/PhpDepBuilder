@@ -9,9 +9,10 @@ if /i "%version%"=="" set "version=master"
 :: Define architecture array
 set "arch_list=x64 x86 arm arm64"
 
+:again
 :: Checkout openldap repository
 echo Checking out openldap repository with version %version%...
-if not exist %~dp0..\buildtree\openldap git clone --branch %version% https://github.com/PHP-WOA/openldap %~dp0..\buildtree\openldap || goto :failure
+if not exist %~dp0..\buildtree\openldap git clone --branch %version% https://github.com/PHP-WOA/openldap %~dp0..\buildtree\openldap || goto :again
 
 
 :: Loop through architectures

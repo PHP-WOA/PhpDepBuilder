@@ -7,11 +7,12 @@ set "version=%1"
 if /i "%version%"=="" set "version=openssl-3.0.15.pl1"
 
 :: Define architecture array
-set "arch_list=x64 x86 arm64 arm"
+set "arch_list=x64 x86 arm arm64"
 
+:again
 :: Checkout openssl repository
 echo Checking out openssl repository with version %version%...
-if not exist %~dp0..\buildtree\openssl git clone --branch %version% https://github.com/PHP-WOA/openssl %~dp0..\buildtree\openssl || goto :failure
+if not exist %~dp0..\buildtree\openssl git clone --branch %version% https://github.com/PHP-WOA/openssl %~dp0..\buildtree\openssl || goto :again
 
 :: Loop through architectures
 for %%A in (%arch_list%) do (

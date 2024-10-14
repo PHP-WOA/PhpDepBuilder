@@ -9,9 +9,10 @@ if /i "%version%"=="" set "version=master"
 :: Define architecture array
 set "arch_list=x64 x86 arm arm64"
 
+:again
 :: Checkout net-snmp repository
 echo Checking out net-snmp repository with version %version%...
-if not exist %~dp0..\buildtree\net-snmp git clone --branch %version% https://github.com/PHP-WOA/net-snmp %~dp0..\buildtree\net-snmp || goto :failure
+if not exist %~dp0..\buildtree\net-snmp git clone --branch %version% https://github.com/PHP-WOA/net-snmp %~dp0..\buildtree\net-snmp || goto :again
 
 :: Loop through architectures
 for %%A in (%arch_list%) do (

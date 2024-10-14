@@ -4,3 +4,4 @@ install
 libs
 patches
 scriptss
+*.cache.txt

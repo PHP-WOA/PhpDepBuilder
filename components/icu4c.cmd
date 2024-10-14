@@ -9,9 +9,10 @@ if /i "%version%"=="" set "version=master"
 :: Define architecture array
 set "arch_list=x64 x86 arm arm64"
 
+:again
 :: Checkout icu4c repository
 echo Checking out icu4c repository with version %version%...
-if not exist %~dp0..\buildtree\icu4c git clone --branch %version% https://github.com/PHP-WOA/icu4c %~dp0..\buildtree\icu4c || goto :failure
+if not exist %~dp0..\buildtree\icu4c git clone --branch %version% https://github.com/PHP-WOA/icu4c %~dp0..\buildtree\icu4c || goto :again
 
 
 :: Loop through architectures

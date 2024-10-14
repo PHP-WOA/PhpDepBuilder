@@ -9,9 +9,10 @@ if /i "%version%"=="" set "version=master"
 :: Define architecture array
 set "arch_list=x64 x86 arm arm64"
 
+:again
 :: Checkout libiconv repository
 echo Checking out libiconv repository with version %version%...
-if not exist %~dp0..\buildtree\libiconv git clone --branch %version% https://github.com/PHP-WOA/libiconv %~dp0..\buildtree\libiconv || goto :failure
+if not exist %~dp0..\buildtree\libiconv git clone --branch %version% https://github.com/PHP-WOA/libiconv %~dp0..\buildtree\libiconv || goto :again
 
 
 :: Loop through architectures

@@ -9,9 +9,10 @@ if /i "%version%"=="" set "version=dev"
 :: Define architecture array
 set "arch_list=x64 x86 arm arm64"
 
+:again
 :: Checkout libzstd repository
 echo Checking out libzstd repository with version %version%...
-if not exist %~dp0..\buildtree\libzstd git clone --branch %version% https://github.com/PHP-WOA/zstd %~dp0..\buildtree\libzstd || goto :failure
+if not exist %~dp0..\buildtree\libzstd git clone --branch %version% https://github.com/PHP-WOA/zstd %~dp0..\buildtree\libzstd || goto :again
 
 
 :: Loop through architectures

@@ -9,9 +9,10 @@ if /i "%version%"=="" set "version=master"
 :: Define architecture array
 set "arch_list=x64 x86 arm arm64"
 
+:again
 :: Checkout cyrus-sasl repository
 echo Checking out cyrus-sasl repository with version %version%...
-if not exist %~dp0..\buildtree\cyrus-sasl git clone --branch %version% https://github.com/PHP-WOA/cyrus-sasl %~dp0..\buildtree\cyrus-sasl || goto :failure
+if not exist %~dp0..\buildtree\cyrus-sasl git clone --branch %version% https://github.com/PHP-WOA/cyrus-sasl %~dp0..\buildtree\cyrus-sasl || goto :again
 
 
 :: Loop through architectures

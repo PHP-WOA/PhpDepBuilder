@@ -1,11 +1,18 @@
 @echo off
-setlocal enabledelayedexpansion
-
 set arch=%~1
 if "%~1"=="" (
    set "arch=x64"
 )
 
+if not exist "%~dp0vsdevcmd.cache.txt" goto :notcached
+setlocal enabledelayedexpansion
+for /f "usebackq delims=" %%i in ("%~dp0vsdevcmd.cache.txt") do (
+   set "cacheddevcmd=%%i"
+)
+endlocal&set "devcmd=%cacheddevcmd%"
+if exist "%devcmd%" goto :callvsdevcmd
+:notcached
+setlocal enabledelayedexpansion
 
 set "vs="
 set "vsnum="
@@ -49,6 +56,11 @@ if /i "!devcmddir!" == "" (
 )
 echo Found Developer cmd path at: !devcmddir!
 
+endlocal&set "devcmddir=%devcmddir%"
+set "devcmd=%devcmddir%\vcvarsall.bat"
+echo %devcmd%>"%~dp0vsdevcmd.cache.txt"
+:callvsdevcmd
+
 set "archprefix="
 if "%arch%"=="x64" (
     set "archprefix=x64"
@@ -65,6 +77,5 @@ if not defined archprefix (
     exit /b 1
 )
 
-endlocal&set "devcmddir=%devcmddir%"&set "archprefix=%archprefix%"
-call "%devcmddir%\vcvarsall.bat" %archprefix%
+call "%devcmd%" %archprefix%
 exit /b 0

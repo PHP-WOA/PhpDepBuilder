@@ -7,11 +7,12 @@ set "version=%1"
 if /i "%version%"=="" set "version=main"
 
 :: Define architecture array
-set "arch_list=x64 x86 arm64 arm"
+set "arch_list=x64 x86 arm arm64"
 
+:again
 :: Checkout pthreads repository
 echo Checking out pthreads repository with version %version%...
-if not exist %~dp0..\buildtree\pthreads git clone --branch %version% https://github.com/PHP-WOA/pthreads %~dp0..\buildtree\pthreads || goto :failure
+if not exist %~dp0..\buildtree\pthreads git clone --branch %version% https://github.com/PHP-WOA/pthreads %~dp0..\buildtree\pthreads || goto :again
 
 :: Loop through architectures
 for %%A in (%arch_list%) do (

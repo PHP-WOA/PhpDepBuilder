@@ -9,9 +9,10 @@ if /i "%version%"=="" set "version=master"
 :: Define architecture array
 set "arch_list=x64 x86 arm arm64"
 
+:again
 :: Checkout postgresql repository
 echo Checking out postgresql repository with version %version%...
-if not exist %~dp0..\buildtree\postgresql git clone --branch %version% https://github.com/PHP-WOA/postgresql %~dp0..\buildtree\postgresql || goto :failure
+if not exist %~dp0..\buildtree\postgresql git clone --branch %version% https://github.com/PHP-WOA/postgresql %~dp0..\buildtree\postgresql || goto :again
 
 
 :: Loop through architectures

@@ -9,9 +9,10 @@ if /i "%version%"=="" set "version=master"
 :: Define architecture array
 set "arch_list=x64 x86 arm arm64"
 
+:again
 :: Checkout libxml2 repository
 echo Checking out libxml2 repository with version %version%...
-if not exist %~dp0..\buildtree\libxml2 git clone --branch %version% https://github.com/PHP-WOA/libxml2 %~dp0..\buildtree\libxml2 || goto :failure
+if not exist %~dp0..\buildtree\libxml2 git clone --branch %version% https://github.com/PHP-WOA/libxml2 %~dp0..\buildtree\libxml2 || goto :again
 
 
 :: Loop through architectures

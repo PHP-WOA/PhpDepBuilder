@@ -9,9 +9,10 @@ if /i "%version%"=="" set "version=master"
 :: Define architecture array
 set "arch_list=x64 x86 arm arm64"
 
+:again
 :: Checkout nghttp2 repository
 echo Checking out nghttp2 repository with version %version%...
-if not exist %~dp0..\buildtree\nghttp2 git clone --branch %version% https://github.com/PHP-WOA/nghttp2 %~dp0..\buildtree\nghttp2 || goto :failure
+if not exist %~dp0..\buildtree\nghttp2 git clone --branch %version% https://github.com/PHP-WOA/nghttp2 %~dp0..\buildtree\nghttp2 || goto :again
 
 
 :: Loop through architectures

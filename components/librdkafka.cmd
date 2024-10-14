@@ -9,9 +9,10 @@ if /i "%version%"=="" set "version=master"
 :: Define architecture array
 set "arch_list=x64 x86 arm arm64"
 
+:again
 :: Checkout librdkafka repository
 echo Checking out librdkafka repository with version %version%...
-if not exist %~dp0..\buildtree\librdkafka git clone --branch %version% https://github.com/PHP-WOA/librdkafka %~dp0..\buildtree\librdkafka || goto :failure
+if not exist %~dp0..\buildtree\librdkafka git clone --branch %version% https://github.com/PHP-WOA/librdkafka %~dp0..\buildtree\librdkafka || goto :again
 
 
 :: Loop through architectures
