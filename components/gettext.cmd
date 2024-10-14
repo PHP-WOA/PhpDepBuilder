@@ -35,14 +35,14 @@ setlocal
     echo Installing gettext for arch %~1...
     pushd %~dp0..\buildtree\gettext
     mkdir %~dp0..\libs\gettext\%~1\include
-    copy ..\source\gettext-runtime\intl\libgnuintl.h %~dp0..\libs\gettext\%~1\include\libintl.h /Y
+    copy source\gettext-runtime\intl\libgnuintl.h %~dp0..\libs\gettext\%~1\include\libintl.h /Y
     xcopy MSVCAUTO\%~1\Release\libintl.dll %~dp0..\libs\gettext\%~1\bin\* /Y
     xcopy MSVCAUTO\%~1\Release\libintl.pdb %~dp0..\libs\gettext\%~1\bin\* /Y
     xcopy MSVCAUTO\%~1\Release\libintl.lib %~dp0..\libs\gettext\%~1\lib\* /Y
     xcopy MSVCAUTO\%~1\Release\libintl_a.lib %~dp0..\libs\gettext\%~1\lib\* /Y
     xcopy MSVCAUTO\%~1\Release\libintl_a.pdb %~dp0..\libs\gettext\%~1\lib\* /Y
     mkdir %~dp0..\install\%~1\include
-    copy ..\source\gettext-runtime\intl\libgnuintl.h %~dp0..\install\%~1\include\libintl.h /Y
+    copy source\gettext-runtime\intl\libgnuintl.h %~dp0..\install\%~1\include\libintl.h /Y
     xcopy MSVCAUTO\%~1\Release\libintl.dll %~dp0..\install\%~1\bin\* /Y
     xcopy MSVCAUTO\%~1\Release\libintl.pdb %~dp0..\install\%~1\bin\* /Y
     xcopy MSVCAUTO\%~1\Release\libintl.lib %~dp0..\install\%~1\lib\* /Y
